@@ -1,17 +1,27 @@
-import logo from './logo.svg';
+import { useContext } from 'react';
 import './App.css';
 import Contacts from './components/contacts/Contacts';
 import ThemeChangerButton from './components/themeChanger/ThemeChangerButton';
-import { ThemeContextProvider } from './contexts/ThemeContext';
+import { ThemeContext, ThemeContextProvider } from './contexts/ThemeContext';
+import { ThemeProvider } from 'styled-components';
+import { styledComponentsTheme  } from './components/styledComponents';
 
 function App() {
+
+  const { themeName }=useContext(ThemeContext);
+
   return (
     <div className="App">
-      <ThemeContextProvider>
-        <ThemeChangerButton />
-        <Contacts />
-      </ThemeContextProvider>
+      
+      <ThemeProvider theme={styledComponentsTheme[themeName]}>
+        <div>
+          <ThemeChangerButton />
+          <Contacts />
 
+        </div>
+
+      </ThemeProvider>
+   
     </div>
   );
 }

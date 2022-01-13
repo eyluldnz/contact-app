@@ -26,7 +26,8 @@ function ThemeContextProvider({ children }) {
     <ThemeContext.Provider value={
         {
             theme: themeName === 'light' ? themes.light : themes.dark,
-            setThemeName
+            setThemeName,
+            themeName
         }
     }
     >
